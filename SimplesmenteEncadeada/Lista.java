@@ -33,7 +33,7 @@ public class Lista {
         }
     }
 
-    public void inserirNoFinal (No noVari) {
+    public void inserirNoFinal(No noVari) {
         if (isEmpty() == true) {
             primeiro = noVari;
             ultimo = noVari;
@@ -43,13 +43,49 @@ public class Lista {
         }
     }
 
-    public void inserirNaFrente (No noVari) {
+    public void inserirNaFrente(No noVari) {
         if (isEmpty() == true) {
             primeiro = noVari;
             ultimo = noVari;
         } else {
             noVari.setProximo(this.primeiro);
             this.primeiro = noVari;
+        }
+    }
+
+    public void removerNo(int matriculaVari) {
+        No noPercorrendo = this.primeiro;
+
+        if (isEmpty()) {
+            return;
+        }
+
+        if (noPercorrendo == this.primeiro && this.primeiro.getAluno().getMatricula() == matriculaVari) { // se caso o
+                                                                                                          // primeiro já
+                                                                                                          // for o nó
+                                                                                                          // desejado
+            if (this.primeiro == ultimo) { // e caso só tiver um nó na lista
+                this.primeiro = null;
+                ultimo = null;
+            }
+
+            this.primeiro = primeiro.getProximo();
+            return;
+        }
+
+        while (noPercorrendo.getProximo() != null) {
+            if (noPercorrendo.getProximo().getAluno().getMatricula() == matriculaVari) {
+                if (noPercorrendo.getProximo() == ultimo) { // se caso for o último
+                    ultimo = noPercorrendo;
+                    ultimo.setProximo(null);
+                    return;
+                } else { // se caso não for nem primeiro nem ultimo
+                    noPercorrendo.setProximo(noPercorrendo.getProximo().getProximo());
+                    return;
+                }
+            } else {
+                noPercorrendo = noPercorrendo.getProximo();
+            }
         }
     }
 
