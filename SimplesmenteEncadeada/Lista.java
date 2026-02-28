@@ -4,7 +4,7 @@ public class Lista {
     private No primeiro;
     private No ultimo;
 
-    public Lista () {
+    public Lista() {
         this.primeiro = null;
         this.ultimo = null;
     }
@@ -24,5 +24,33 @@ public class Lista {
     public No getUltimo() {
         return ultimo;
     }
-    
-}
+
+    public boolean isEmpty() {
+        if (this.primeiro == null && this.ultimo == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void inserirNoFinal (No noVari) {
+        if (isEmpty() == true) {
+            primeiro = noVari;
+            ultimo = noVari;
+        } else {
+            this.ultimo.setProximo(noVari);
+            this.ultimo = noVari;
+        }
+    }
+
+    public void inserirNaFrente (No noVari) {
+        if (isEmpty() == true) {
+            primeiro = noVari;
+            ultimo = noVari;
+        } else {
+            noVari.setProximo(this.primeiro);
+            this.primeiro = noVari;
+        }
+    }
+
+}// classe
