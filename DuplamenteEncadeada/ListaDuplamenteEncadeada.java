@@ -1,10 +1,10 @@
 package DuplamenteEncadeada;
 
-public class Lista {
+public class ListaDuplamenteEncadeada {
     private No primeiro;
     private No ultimo;
 
-    public Lista() {
+    public ListaDuplamenteEncadeada() {
         this.primeiro = null;
         this.ultimo = null;
     }
